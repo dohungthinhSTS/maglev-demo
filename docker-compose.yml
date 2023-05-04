@@ -1,0 +1,26 @@
+version: '3.2'
+
+volumes:
+  pg_postgres:
+    driver: local
+     
+services:
+  web:
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3102:3000"
+    build: .
+    entrypoint: ./docker-entrypoint.sh  
+    env_file:
+      - .env
+  db:
+    image: postgres:11
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5436:5432'
+    volumes:
+      - pg_postgres:/var/lib/postgresql/data/pgdata
