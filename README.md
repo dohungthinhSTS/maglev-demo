@@ -11,7 +11,7 @@ $ docker-compose up -d
 ```bash
 # Docker hints
 Check logs of backend server:
-$ cd spina-demo
+$ cd maglev-demo
 $ docker-compose logs -f web
 
 Debug backend server:
