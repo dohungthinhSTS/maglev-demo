@@ -1,11 +1,12 @@
 #!/bin/sh
 
 bundle install
-rake db:create
-rake db:migrate
+rails db:create
+rails db:migrate
 
-rake maglev:vite:install_dependencies
-rake maglev:vite:build_all
+rails maglev:vite:install_dependencies
+rails maglev:vite:build_all
+rails maglev:create_site
 
 rm -f tmp/pids/server.pid
 rails server -b 0.0.0.0
